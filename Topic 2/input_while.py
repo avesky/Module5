@@ -39,8 +39,9 @@ Test running your script in the shell.
 #while 1 > user_number or user_number > 100:
 #    user_number = int(input('Enter a number: '))
 #test_list.append(user_number)
+#for num in test_list:
+#    print(num)
 
-#print(test_list)
 
 # 2nd part following pseudocode
 test_list = []
@@ -50,10 +51,12 @@ while user_number != 999:
         user_number = int(input('Enter a good number please: '))
     test_list.append(user_number)
     user_number = int(input('Enter a number between 1 and 100 (999 to stop): '))
-print(test_list)
+for num in test_list:
+    print(num)
+
 
 # tested numbers 2, 5, 8, 90, 999
-# printed [2, 5, 8, 90]
+# printed 2, 5, 8, 90
 
 # tested numbers -3, -10, 500, 90, 7, -8, 50, 999
-# printed [90, 7, 50]
+# printed 90, 7, 50
