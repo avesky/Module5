@@ -30,19 +30,27 @@ and observed output after a few test runs of your code.
 
 
 # 2nd part following pseudocode
-test_list = []
-user_number = int(input('Enter a number between 1 and 100 (999 to stop): '))
-while user_number != 999:
-    while 1 > user_number or user_number > 100:
-        user_number = int(input('Enter a good number please: '))
-        if user_number == 999:
-            break
-    if user_number == 999:
-        break
-    test_list.append(user_number)
-    user_number = int(input('Enter a number between 1 and 100 (999 to stop): '))
-for num in test_list:
-    print(num)
+data_list = []
+def try_parse(input):
+  try:
+    return float(input)
+  except ValueError:
+    return None
+
+while True:
+    user_input = try_parse(input('Enter a number between 1 and 100 (999 to stop): '))
+    if user_input == None:
+        print("unable to parse input")
+    elif user_input == 999:
+        print("detected sentinel value. exiting")
+        print("here are the valid values you entered:")
+        print(", ".join(map(str, data_list)))
+        quit()
+    elif  1 <= user_input <= 100:
+        data_list.append(user_input)
+    else:
+        print("invalid entry. please constrain your input to the range [1, 100]")
+
 
 # tested numbers 2, 5, 8, 90, 999
 # printed 2, 5, 8, 90
