@@ -30,19 +30,24 @@ and observed output after a few test runs of your code.
 
 
 # 2nd part following pseudocode
-test_list = []
-user_number = int(input('Enter a number between 1 and 100 (999 to stop): '))
-while user_number != 999:
-    while 1 > user_number or user_number > 100:
-        user_number = int(input('Enter a good number please: '))
-        if user_number == 999:
-            break
+data_list = []
+
+while True:
+    user_input = input('Enter a number between 1 and 100 (999 to stop): ')
+    if not user_input.isnumeric():
+        print("that doesn't look like a number")
+        continue
+    user_number = int(user_input)
     if user_number == 999:
-        break
-    test_list.append(user_number)
-    user_number = int(input('Enter a number between 1 and 100 (999 to stop): '))
-for num in test_list:
-    print(num)
+        print("detected sentinel value. exiting")
+        print("here are the valid values you entered:")
+        print(", ".join(map(str, data_list)))
+        quit()
+    if  user_number < 1 or user_number > 100:
+        print("invalid entry. please constrain your input to the range [1, 100]")
+        continue
+    data_list.append(user_number)
+
 
 # tested numbers 2, 5, 8, 90, 999
 # printed 2, 5, 8, 90
