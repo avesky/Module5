@@ -43,10 +43,10 @@ while True:
         print("here are the valid values you entered:")
         print(", ".join(map(str, data_list)))
         quit()
-    if  user_number < 1 or user_number > 100:
+    if  1 <= user_number <= 100:
+        data_list.append(user_number)
+    else:
         print("invalid entry. please constrain your input to the range [1, 100]")
-        continue
-    data_list.append(user_number)
 
 
 # tested numbers 2, 5, 8, 90, 999
